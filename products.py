@@ -1,12 +1,22 @@
+import os #operating system
+
+
 # 讀取檔案
 products = []
-with open('products.csv', 'r', encoding='UTF-8') as f:
-	for line in f:
-		if '商品名稱,商品價格' in line:
-			continue #進行下一迴(跳過本迴)
-		name, price = line.strip().split(',')
-		products.append([name, price])	
-print(products)	
+if os.path.isfile('products.csv'): # 檢查檔案是否存在
+	print('yeah! Here you are!')
+	with open('products.csv', 'r', encoding='UTF-8') as f:
+		for line in f:
+			if '商品名稱,商品價格' in line:
+				continue #進行下一迴(跳過本迴)
+			name, price = line.strip().split(',')
+			products.append([name, price])	
+	print(products)	
+else:
+	print('Sorry!There is no file that you want.')
+
+
+
 
 # 讓使用者輸入
 products = []
